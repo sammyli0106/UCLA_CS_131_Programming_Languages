@@ -1,0 +1,45 @@
+1. Ambiguous Puzzle
+
+Command : | ?- ambiguous(4, counts([1,2,2,4],[4,2,2,1],[1,2,2,4],[4,2,2,1]), T1, T2).
+
+Output : 
+
+N = 4
+
+T1 = [[4,3,2,1],[3,1,4,2],[2,4,1,3],[1,2,3,4]]
+T2 = [[4,3,2,1],[3,4,1,2],[2,1,4,3],[1,2,3,4]] ? ;
+
+T1 = [[4,3,2,1],[3,4,1,2],[2,1,4,3],[1,2,3,4]]
+T2 = [[4,3,2,1],[3,1,4,2],[2,4,1,3],[1,2,3,4]] ? ;
+
+———————————————————————————————————————————————————————————————————————————————————————
+
+2. Statistics 
+
+N = 5
+
+Command :?- speedup(R).
+
+tower(5, _, counts([3,2,3,5,1], [2,3,2,1,2], [3,2,2,1,2], [1,3,3,3,2]))
+plain_tower(5, _, counts([3,2,3,5,1], [2,3,2,1,2], [3,2,2,1,2], [1,3,3,3,2]))
+
+Output : R = 1477.8333333333333 ? 
+
+Explanation : I am solving the above puzzle with both tower and plain_tower predicate.
+The ratio is computed by dividing the plain_tower time by tower time to find an ratio 
+that is greater than 1. This is expected since we have used finite domain server in our
+tower predicate in order to limit the search domain, therefore the cpu time that it 
+takes to solve the puzzle is less. For plain_tower predicate, we did not use the finite 
+domain solver, therefore it will take more time to solve the same puzzle. As a result,
+a bigger number over a smaller number will give us a ratio that is greater than one.  
+
+———————————————————————————————————————————————————————————————————————————————————————
+
+3. References 
+
+http://www.cse.unsw.edu.au/~billw/dictionaries/prolog/is.html
+https://stackoverflow.com/questions/19230594/list-length-in-prolog
+http://www.gprolog.org/manual/gprolog.html#sec326
+http://www.gprolog.org/manual/html_node/gprolog044.html#sec220
+% https://stackoverflow.com/questions/4280986/how-to-transpose-a-matrix-in-prolog
+

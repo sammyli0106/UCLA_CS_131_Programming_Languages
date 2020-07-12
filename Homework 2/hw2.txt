@@ -1,0 +1,28 @@
+Homework 2 After Action report 
+
+1. Explanation of make_parser and make_matcher 
+
+I have chosen to write my make_parser in terms of make_matcher. The implementation of the two function
+are basically the same except there is a slight modification from the make_parser function.
+The line "| return_input -> return_input" from make_matcher is being changed to "| Some elem -> Some (head_pos :: elem)"
+from make_parser. The purpose of the modified line is to insert the related rules to create a set of rules that need to 
+traversed. The reason why choose the duplication apporach is because I am not able to think of an efficient way to 
+combine the code from make parser with make matcher to make it become one block of code. 
+Throughout the implementation, I have encounted a lot of logic and type errors and I have to correct them and 
+based them from documentation and discussion slides. However, I have a better understanding on the syntax of Ocaml. 
+For the implementation of make_matcher, it is using the DFS approach based from the slides. In order to find the 
+correct prefix match, we are checking the list starting from left side to the righ side. Throughout the DFS searching 
+which is based from the start nonterminal symbol, then we will try other rules from the alternative list through
+back tracing. For the implementation of make_parser, it is the same structure as make_matcher. However, it does not make any 
+calls to make matcher. Therefore, it is not depend on my make_matcher function. 
+
+
+2. Explanation of weakness of my program with examples 
+
+The first weakness of my program is the duplication of make_matcher code for the make_parser code. This means I also duplicate
+the helper function and the second recusrion function in make_parser. Overall, the running time is longer and also it is not
+very efficient, but I am not able to come up with a way to reuse make matcher as a block box to implement make parser.
+The second weakness of my program is it is unable to process regular, normal grammar. The make_parser that I have implemented 
+can only process context free grammars. When there is a nonterminal symbol that will try to call itself as being one of the
+grammar rules, the program will output an error saying there is stack overflow during evaluation. So, the error occur when I am 
+calling the testcase with my make_parser function, my program will fail specifically for this grammar and stay in a infinite loop.

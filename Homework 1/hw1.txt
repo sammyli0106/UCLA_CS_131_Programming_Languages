@@ -1,0 +1,36 @@
+Homework 1 Assessment Report 
+
+1. I know that I need a helper function to check whether an element from a set is include in another set. 
+For the function subset a b, I know that there are two cases. If the case is empty set considered to be subset.
+The second case is the head element of set a is in set b, and I need to recursively check the
+rest of the set a. 
+
+2. For function equal_sets a b, in order for set a and set b to be equal, they need to 
+be subset of each other. Therefore, I have reused the subset function to check whether
+set a and b are equal set or not.
+
+3. For function set_union a b, I check if set a is an empty set, then the union is just set b. 
+I will check if the set a head element is inside set b. If yes, then I will
+recursively search through the rest. If no, then I will add the head element
+to set b and recursively search the rest of set a.
+
+4. For function set_intersection a b, I have to use the filter function from List to
+find out the intersecting elements between set a and b.
+
+5. For function set_diff a b, the concept is similar to the above, but we are finding 
+difference here. I have flipped the order of set a and b, and negate the expression.
+
+6. For function computed_fixed_point eq f x, there are two things to consider.
+First, I need to check is f(x) is equal to x. If yes, then I will return x.
+If no, then I need to keep checking f(f(f(..x))) is equal to x recursively. 
+
+7. First, I wrote a function called find_non_terminal to extract all the non-terminal elements 
+from right hand side. Second, I wrote a function extract_symbols that will form a list of available 
+non-terminal elements. Third, I wrote a function extract_reachable that will check which non-terminal elements have actually used and validate. 
+At last, I wrote a remove_all_unreachable function by using the filter function.
+
+Resources : 
+1. https://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html
+2. https://ocaml.org/learn/tutorials/structure_of_ocaml_programs.html
+
+
